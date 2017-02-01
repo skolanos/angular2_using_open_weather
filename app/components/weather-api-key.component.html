@@ -1,0 +1,13 @@
+<div class="container">
+	<br>
+	<p>
+		Do prawidłowego działania konieczne jest podanie klucza umożliwiającego dostęp do API pod adresem <a href="http://openweathermap.org/api" target="_blank">OpenWeatherMap API</a>.<br>
+		Bez tego klucza dostęp do usługi z informacjami o warunkach pogodowych nie jest możliwy.
+	</p>
+	<form onsubmit="return false">
+		<div class="form-group">
+			<label for="apiKey">API key</label>
+			<input type="text" name="apiKey" [(ngModel)]="apiKey" class="form-control" (blur)="setApiKey()">
+		</div>
+	</form>
+</div>

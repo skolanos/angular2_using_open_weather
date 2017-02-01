@@ -1,0 +1,15 @@
+<div class="container">
+	<form name="form" onsubmit="return false;">
+		<div class="form-group">
+			<label for="cityName">Miejscowość</label>
+			<input type="text" name="cityName" [(ngModel)]="cityName" class="form-control" placeholder="Miejscowość, kraj">
+			<button type="submit" class="btn btn-primary" (click)="getWeatherForCity()">Szukaj</button>
+		</div>
+	</form>
+	<div class="alert alert-danger" *ngIf="messages.length > 0">
+		<strong>Informacje:</strong><br>
+		<ul>
+			<li *ngFor="let message of messages">{{message}}</li>
+		</ul>
+	</div>
+</div>

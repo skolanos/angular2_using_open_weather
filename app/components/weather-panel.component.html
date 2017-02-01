@@ -1,0 +1,8 @@
+<div class="container">
+	<weather-search (currentWeatherData)="handleCurrentWeatherData($event)"></weather-search>
+	<br>
+	<div *ngIf="currentWeatherData">
+		<label>Aktualne dane pogodowe</label>
+		<pre>{{currentWeatherData | json}}</pre>
+	</div>
+</div>
