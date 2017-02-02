@@ -24,6 +24,8 @@ export class WeatherService {
 
 		params.set('q', cityName);
 		params.set('appid', this.apiKey);
+		params.set('units', 'metric');
+		params.set('lang', 'pl');
 
 		return this.http.get('http://api.openweathermap.org/data/2.5/weather', {
 			headers: new Headers({ 'Accept': 'application/json' }),
