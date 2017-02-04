@@ -19,6 +19,8 @@ export class WeatherPanelComponent {
 		this.currentWeather = new CurrentWeatherParams(value);
 	}
 	handleFiveDayForecastData(value: any): void {
-		this.fiveDayForecastData = value;
+		this.fiveDayForecastData = {
+			rawData: value
+		};
 	}
 }

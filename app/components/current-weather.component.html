@@ -12,7 +12,7 @@
 			</div>
 			<div class="col-md-5">
 				<div><!--Miejscowość-->{{data.rawData.name}} <small>[<!--Szerokość geograficzna-->{{data.rawData.coord.lat}}, <!--Długość geograficzna-->{{data.rawData.coord.lon}}]</small></div>
-				<div><!--Czas-->{{data.dataCalculation | date:'d.MM.y HH:mm'}}</div>
+				<div><!--Czas-->{{data.rawData.dt * 1000 | date:'d.MM.y HH:mm'}}</div>
 			</div>
 		</div>
 		<!--Warunki pogodowe: {{data.rawData.weather[0].id}}-->
@@ -24,10 +24,10 @@
 		<!--<span *ngIf="data.rawData.main.grnd_level" style="color: red">Ciśnienie atmosferyczne na poziomie gruntu: {{data.rawData.main.grnd_level}} hPa<br></span>-->
 		<!--Widoczność: {{data.rawData.visibility}}<br>-->
 		Prędkość wiatru: {{data.rawData.wind.speed}} m/s<br>
-		Kierunek wiatru: {{data.rawData.wind.deg}} &deg;<br>
+		<span style="color: orange">Kierunek wiatru: {{data.rawData.wind.deg}} &deg;<br></span>
 		<!--<span *ngIf="data.rawData.rain" style="color: red">Opady deszczu: {{data.rawData.rain["3h"]}}<br></span>-->
 		<!--<span *ngIf="data.rawData.snow" style="color: red">Opady śniegu: {{data.rawData.snow["3h"]}}<br></span>-->
-		Wschód słońca: {{data.sunriseTime | date:'HH:mm'}}<br>
-		Zachód słońca: {{data.sunsetTime | date:'HH:mm'}}<br>
+		Wschód słońca: {{data.rawData.sys.sunrise * 1000 | date:'HH:mm'}}<br>
+		Zachód słońca: {{data.rawData.sys.sunset * 1000 | date:'HH:mm'}}<br>
 	</div>
 </div>

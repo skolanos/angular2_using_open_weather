@@ -7,8 +7,11 @@
 		<div class="col-md-4" *ngIf="currentWeather">
 			<current-weather [data]="currentWeather"></current-weather>
 		</div>
-		<div class="col-md-8" *ngIf="fiveDayForecastData">
-			<five-day-forecast [data]="fiveDayForecastData"></five-day-forecast>
+		<div class="col-md-8">
+			Coś tu wsadzić
 		</div>
+	</div>
+	<div class="row"  *ngIf="fiveDayForecastData">
+		<five-day-forecast [data]="fiveDayForecastData"></five-day-forecast>
 	</div>
 </div>

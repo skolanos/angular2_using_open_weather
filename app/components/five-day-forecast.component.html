@@ -1,6 +1,26 @@
 <div class="panel panel-default">
-	<div class="panel-heading"><h3 class="panel-title">Prognoza pięcio dniowa</h3></div>
+	<div class="panel-heading"><h3 class="panel-title">Prognoza</h3></div>
 	<div class="panel-body">
-		<pre>{{data | json}}</pre>
+		<div class="row">
+			<div class="col-md-1" *ngFor="let item of data.rawData.list | slice:0:12">
+				<img src="http://openweathermap.org/img/w/{{item.weather[0].icon}}.png">
+				<div><h5><!--Temperatura-->{{item.main.temp}} &deg;C</h5></div>
+				<div><small><!--Minimalna temperatura--><span style="color: red">{{item.main.temp_min}} &deg;C</span> / <!--Maksymalna temperatura--><span style="color: blue">{{item.main.temp_max}} &deg;C</span></small></div>
+				<!--<div style="color: orange">{{item.weather[0].main}}</div>-->
+				<!--Warunki pogodowe: {{item.weather[0].id}}-->
+				<!--Opis warunków: {{item.weather[0].description}}-->
+				<div><small>{{item.main.pressure}} hPa</small></div>
+				<div><small>{{item.main.humidity}} %</small></div>
+				<!--<h6>{{item.clouds.all}} %</h6>-->
+				<!--<span *ngIf="data.rawData.main.sea_level" style="color: red">Ciśnienie atmosferyczne na poziomie morza: {{item.main.sea_level}} hPa<br></span>-->
+				<!--<span *ngIf="data.rawData.main.grnd_level" style="color: red">Ciśnienie atmosferyczne na poziomie gruntu: {{item.main.grnd_level}} hPa<br></span>-->
+				<div><h6>{{item.wind.speed}} m/s</h6></div>
+				<div><small style="color: orange"><!--Czas-->{{item.dt * 1000 | date:'HH:mm'}}</small></div>
+				<!--<span style="color: orange">Kierunek wiatru: {{item.wind.deg}} &deg;<br></span>-->
+				<!--<span *ngIf="item.rain" style="color: red">Opady deszczu: {{item.rain["3h"]}}<br></span>-->
+				<!--<span *ngIf="item.snow" style="color: red">Opady śniegu: {{item.snow["3h"]}}<br></span>-->
+				<!--Data: {{item.dt_txt}}<br>-->
+			</div>
+		</div>
 	</div>
 </div>
