@@ -13,11 +13,13 @@ export class WeatherSearchComponent {
 	private cityName: string;
 	private messages: string[];
 	@Output() currentWeatherData: EventEmitter<any>;
+	@Output() fiveDayForecastData: EventEmitter<any>;
 
 	constructor(private weatherService: WeatherService) {
 		this.cityName = '';
 		this.messages = [];
 		this.currentWeatherData = new EventEmitter();
+		this.fiveDayForecastData = new EventEmitter();
 	}
 	private checkForm(): boolean {
 		this.messages = [];
@@ -49,6 +51,11 @@ export class WeatherSearchComponent {
 		if (this.checkForm()) {
 			this.weatherService.getCurrentWeatherData(this.cityName).subscribe((value: any) => {
 				this.currentWeatherData.emit(value);
+				this.weatherService.getFiveDayForecast(this.cityName).subscribe((value: any) => {
+					this.fiveDayForecastData.emit(value);
+				}, error => {
+					this.parseError(error);
+				});
 			}, error => {
 				this.parseError(error);
 			});

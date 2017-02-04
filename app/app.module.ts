@@ -10,6 +10,8 @@ import { WeatherService } from './services/weather-service';
 import { AppComponent }  from './app.component';
 import { WeatherSearchComponent } from './components/weather-search.component';
 import { WeatherPanelComponent }  from './components/weather-panel.component';
+import { CurrentWeatherComponent } from './components/current-weather.component';
+import { FiveDayForecastComponent } from './components/five-day-forecast.component';
 import { WeatherAboutComponent }  from './components/weather-about.component';
 import { WeatherApiKeyComponent } from './components/weather-api-key.component';
 
@@ -24,6 +26,8 @@ import { WeatherApiKeyComponent } from './components/weather-api-key.component';
 		AppComponent,
 		WeatherSearchComponent,
 		WeatherPanelComponent,
+		CurrentWeatherComponent,
+		FiveDayForecastComponent,
 		WeatherAboutComponent,
 		WeatherApiKeyComponent
 	],

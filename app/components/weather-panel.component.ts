@@ -1,17 +1,24 @@
 import { Component } from '@angular/core';
 
+import { CurrentWeatherParams } from '../types/current-weather-params';
+
 @Component({
 	moduleId: module.id,
 	selector: 'weather-panel',
 	templateUrl: 'weather-panel.component.html'
 })
 export class WeatherPanelComponent {
-	private currentWeatherData: any;
+	private currentWeather: CurrentWeatherParams;
+	private fiveDayForecastData: any;
 
 	constructor() {
-		this.currentWeatherData = undefined;
+		this.currentWeather = undefined;
+		this.fiveDayForecastData = undefined;
 	}
 	handleCurrentWeatherData(value: any): void {
-		this.currentWeatherData = value;
+		this.currentWeather = new CurrentWeatherParams(value);
+	}
+	handleFiveDayForecastData(value: any): void {
+		this.fiveDayForecastData = value;
 	}
 }

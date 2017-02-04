@@ -1,32 +1,14 @@
 <div class="container">
-	<weather-search (currentWeatherData)="handleCurrentWeatherData($event)"></weather-search>
-	<br>
-	<div class="panel panel-default" *ngIf="currentWeatherData">
-		<div class="panel-heading"><h3 class="panel-title">Aktualne dane pogodowe</h3></div>
-		<div class="panel-body">
-			Długość geograficzna: {{currentWeatherData.coord.lon}}<br>
-			Szerokość geograficzna: {{currentWeatherData.coord.lat}}<br>
-			Warunki pogodowe: {{currentWeatherData.weather[0].id}}<br>
-			Parametry pogodowe: {{currentWeatherData.weather[0].main}}<br>
-			Opis warunków: {{currentWeatherData.weather[0].description}}<br>
-			<img src="http://openweathermap.org/img/w/{{currentWeatherData.weather[0].icon}}.png"><br>
-			Temperatura: {{currentWeatherData.main.temp}} &deg;C<br>
-			Ciśnienie atmosferyczne: {{currentWeatherData.main.pressure}} hPa<br>
-			Wilgotność: {{currentWeatherData.main.humidity}} %<br>
-			Minimalna temperatura: {{currentWeatherData.main.temp_min}} &deg;C<br>
-			Maksymalna temperatura: {{currentWeatherData.main.temp_max}} &deg;C<br>
-			<span *ngIf="currentWeatherData.main.sea_level" style="color: red">Ciśnienie atmosferyczne na poziomie morza: {{currentWeatherData.main.sea_level}} hPa<br></span>
-			<span *ngIf="currentWeatherData.main.grnd_level" style="color: red">Ciśnienie atmosferyczne na poziomie gruntu: {{currentWeatherData.main.grnd_level}} hPa<br></span>
-			Widoczność: {{currentWeatherData.visibility}}<br>
-			Prędkość wiatru: {{currentWeatherData.wind.speed}} m/s<br>
-			Kierunek wiatru: {{currentWeatherData.wind.deg}} &deg;<br>
-			Zachmórzenie: {{currentWeatherData.clouds.all}} %<br>
-			<span *ngIf="currentWeatherData.rain" style="color: red">Opady deszczu: {{currentWeatherData.rain["3h"]}}<br></span>
-			<span *ngIf="currentWeatherData.snow" style="color: red">Opady śniegu: {{currentWeatherData.snow["3h"]}}<br></span>
-			<span style="color: orange">Czas: {{currentWeatherData.dt}} [unix, UTC]<br></span>
-			<span style="color: orange">Wschód słońca: {{currentWeatherData.sys.sunrise}} [unix, UTC]<br></span>
-			<span style="color: orange">Zachód słońca: {{currentWeatherData.sys.sunset}} [unix, UTC]<br></span>
-			Miejscowość: {{currentWeatherData.name}}
+	<weather-search
+		(currentWeatherData)="handleCurrentWeatherData($event)"
+		(fiveDayForecastData)="handleFiveDayForecastData($event)"
+	></weather-search>
+	<div class="row" *ngIf="currentWeather">
+		<div class="col-md-4" *ngIf="currentWeather">
+			<current-weather [data]="currentWeather"></current-weather>
+		</div>
+		<div class="col-md-8" *ngIf="fiveDayForecastData">
+			<five-day-forecast [data]="fiveDayForecastData"></five-day-forecast>
 		</div>
 	</div>
 </div>
