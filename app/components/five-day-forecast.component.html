@@ -5,7 +5,7 @@
 			<div class="col-md-1" *ngFor="let item of data.list | slice:0:12">
 				<img src="http://openweathermap.org/img/w/{{item.weather[0].icon}}.png">
 				<div><h5><!--Temperatura-->{{item.main.temp}} &deg;C</h5></div>
-				<div><small><!--Minimalna temperatura--><span style="color: red">{{item.main.temp_min}} &deg;C</span> / <!--Maksymalna temperatura--><span style="color: blue">{{item.main.temp_max}} &deg;C</span></small></div>
+				<div><small><!--Minimalna temperatura--><span style="color: red">{{item.main.temp_max}} &deg;C</span> / <!--Maksymalna temperatura--><span style="color: blue">{{item.main.temp_min}} &deg;C</span></small></div>
 				<!--<div style="color: orange">{{item.weather[0].main}}</div>-->
 				<!--Warunki pogodowe: {{item.weather[0].id}}-->
 				<!--Opis warunków: {{item.weather[0].description}}-->
