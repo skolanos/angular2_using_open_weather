@@ -2,16 +2,24 @@
 	<weather-search
 		(currentWeatherData)="handleCurrentWeatherData($event)"
 		(fiveDayForecastData)="handleFiveDayForecastData($event)"
+		(sixteenDayForecastData)="handleSixteenDayForecastData($event)"
+		(currentUvData)="handleCurrentUvData($event)"
 	></weather-search>
-	<div class="row" *ngIf="currentWeather">
-		<div class="col-md-4" *ngIf="currentWeather">
-			<current-weather [data]="currentWeather"></current-weather>
+	<div class="row" *ngIf="currentWeatherData">
+		<div class="col-md-4" *ngIf="currentWeatherData">
+			<current-weather [data]="currentWeatherData"></current-weather>
 		</div>
-		<div class="col-md-8">
-			Coś tu wsadzić
+		<div class="col-md-4" *ngIf="currentUvData">
+			<current-uv-index [data]="currentUvData"></current-uv-index>
+		</div>
+		<div class="col-md-4">
+			TODO: miejsce do wykorzystania
 		</div>
 	</div>
-	<div class="row"  *ngIf="fiveDayForecastData">
+	<div class="row" *ngIf="fiveDayForecastData">
 		<five-day-forecast [data]="fiveDayForecastData"></five-day-forecast>
+	</div>
+	<div class="row" *ngIf="sixteenDayForecastData">
+		<sixteen-day-forecast [data]="sixteenDayForecastData"></sixteen-day-forecast>
 	</div>
 </div>

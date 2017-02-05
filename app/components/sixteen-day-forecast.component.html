@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Prognoza na 12 dni</h3></div>
+	<div class="panel-body">
+		<ul class="list-group">
+			<li class="list-group-item" *ngFor="let item of data.list | slice:0:12">
+				<img src="http://openweathermap.org/img/w/{{item.weather[0].icon}}.png">
+				<div>Data: {{item.dt * 1000 | date:'d.MM.y'}}</div>
+				<div>Temperatura: {{item.temp.day}}</div>
+			</li>
+		</ul>
+	</div>
+</div>

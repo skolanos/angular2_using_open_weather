@@ -59,4 +59,14 @@ export class WeatherService {
 			search: params
 		}).map((response: Response) => response.json());
 	}
+	getCurrentUvIndex(lat: number, lon: number): Observable<Response> {
+		let params = new URLSearchParams();
+
+		params.set('appid', this.apiKey);
+
+		return this.http.get(`http://api.openweathermap.org/v3/uvi/${lat},${lon}/current.json`, {
+			headers: new Headers({ 'Accept': 'application/json' }),
+			search: params
+		}).map((response: Response) => response.json());
+	}
 }

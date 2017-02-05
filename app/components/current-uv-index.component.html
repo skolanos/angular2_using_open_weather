@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Indeks UV</h3></div>
+	<div class="panel-body">
+		<div *ngIf="data.data >= 0 && data.data < 3">
+			<div style="text-align: center"><h1 style="color: green">{{data.data}}</h1></div>
+			<p>Brak zagrożeń dla zdrowego człowieka</p>
+		</div>
+		<div *ngIf="data.data >= 3 && data.data < 6">
+			<div style="text-align: center"><h1 style="color: yellow">{{data.data}}</h1></div>
+			<p>Średnie zagrożenie podczas dłuższego przebywania na słońcu</p>
+		</div>
+		<div *ngIf="data.data >= 6 && data.data < 8">
+			<div style="text-align: center"><h1 style="color: orange">{{data.data}}</h1></div>
+			<p>Wysokie i bardzo wysokie zagrożenie podczas dłuższego przebywania na słońcu</p>
+		</div>
+		<div *ngIf="data.data >= 8 && data.data < 11">
+			<div style="text-align: center"><h1 style="color: red">{{data.data}}</h1></div>
+			<p>Bardzo wysokie zagrożenie podczas przebywania na słońcu</p>
+		</div>
+		<div *ngIf="data.data >= 11">
+			<div style="text-align: center"><h1 style="color: violet">{{data.data}}</h1></div>
+			<p>Ekstremalne zagrożenie podczas przebywania na słońcu</p>
+		</div>
+	</div>
+</div>

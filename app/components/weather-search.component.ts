@@ -14,12 +14,16 @@ export class WeatherSearchComponent {
 	private messages: string[];
 	@Output() currentWeatherData: EventEmitter<any>;
 	@Output() fiveDayForecastData: EventEmitter<any>;
+	@Output() sixteenDayForecastData: EventEmitter<any>;
+	@Output() currentUvData: EventEmitter<any>;
 
 	constructor(private weatherService: WeatherService) {
 		this.cityName = '';
 		this.messages = [];
 		this.currentWeatherData = new EventEmitter();
 		this.fiveDayForecastData = new EventEmitter();
+		this.sixteenDayForecastData = new EventEmitter();
+		this.currentUvData = new EventEmitter();
 	}
 	private checkForm(): boolean {
 		this.messages = [];
@@ -36,12 +40,9 @@ export class WeatherSearchComponent {
 		return true;
 	}
 	private parseError(error: any): void {
-		let errorBody = JSON.parse(error._body);
-
 		this.messages = [];
 		if (true === true) {
-			// oryginalne komunikaty błędów zwrócone przez REST
-			this.messages.push(errorBody.cod + ': ' + errorBody.message);
+			this.messages.push(JSON.stringify(error));
 		}
 		else {
 			this.messages.push('Wystąpił błąd przy komunikacji z serwisem.');
@@ -49,10 +50,32 @@ export class WeatherSearchComponent {
 	}
 	getWeatherForCity(): void {
 		if (this.checkForm()) {
+			let coord: any = {};
 			this.weatherService.getCurrentWeatherData(this.cityName).subscribe((value: any) => {
+				coord = { lat: value.coord.lat, lon: value.coord.lon};
 				this.currentWeatherData.emit(value);
 				this.weatherService.getFiveDayForecast(this.cityName).subscribe((value: any) => {
 					this.fiveDayForecastData.emit(value);
+					this.weatherService.getSixteenDayForecast(this.cityName, 16).subscribe((value: any) => {
+						this.sixteenDayForecastData.emit(value);
+						this.weatherService.getCurrentUvIndex(coord.lat, coord.lon).subscribe((value: any) => {
+							this.currentUvData.emit(value);
+						}, error => {
+							if (error.status === 404) {
+								// brak danych dla podanego obszaru, poszukiwanie na większym obszarze
+								this.weatherService.getCurrentUvIndex(Math.floor(coord.lat), Math.floor(coord.lon)).subscribe((value: any) => {
+									this.currentUvData.emit(value);
+								}, error => {
+									this.parseError(error);
+								});
+							}
+							else {
+								this.parseError(error);
+							}
+						});
+					}, error => {
+						this.parseError(error);
+					});
 				}, error => {
 					this.parseError(error);
 				});

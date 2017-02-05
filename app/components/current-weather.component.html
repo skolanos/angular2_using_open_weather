@@ -3,31 +3,31 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-md-2">
-				<img src="http://openweathermap.org/img/w/{{data.rawData.weather[0].icon}}.png">
+				<img src="http://openweathermap.org/img/w/{{data.weather[0].icon}}.png">
 			</div>
 			<div class="col-md-5">
-				<h1><!--Temperatura-->{{data.rawData.main.temp}} &deg;C</h1>
-				<h4><!--Minimalna temperatura-->{{data.rawData.main.temp_min}} &deg;C / <!--Maksymalna temperatura-->{{data.rawData.main.temp_max}} &deg;C</h4>
-				<div style="color: orange"><!--Parametry pogodowe-->{{data.rawData.weather[0].main}}</div>
+				<h1><!--Temperatura-->{{data.main.temp}} &deg;C</h1>
+				<h4><!--Minimalna temperatura-->{{data.main.temp_min}} &deg;C / <!--Maksymalna temperatura-->{{data.main.temp_max}} &deg;C</h4>
+				<div style="color: orange"><!--Parametry pogodowe-->{{data.weather[0].main}}</div>
 			</div>
 			<div class="col-md-5">
-				<div><!--Miejscowość-->{{data.rawData.name}} <small>[<!--Szerokość geograficzna-->{{data.rawData.coord.lat}}, <!--Długość geograficzna-->{{data.rawData.coord.lon}}]</small></div>
-				<div><!--Czas-->{{data.rawData.dt * 1000 | date:'d.MM.y HH:mm'}}</div>
+				<div><!--Miejscowość-->{{data.name}} <small>[<!--Szerokość geograficzna-->{{data.coord.lat}}, <!--Długość geograficzna-->{{data.coord.lon}}]</small></div>
+				<div><!--Czas-->{{data.dt * 1000 | date:'d.MM.y HH:mm'}}</div>
 			</div>
 		</div>
-		<!--Warunki pogodowe: {{data.rawData.weather[0].id}}-->
-		<!--Opis warunków: {{data.rawData.weather[0].description}}-->
-		Ciśnienie atmosferyczne: {{data.rawData.main.pressure}} hPa<br>
-		Wilgotność: {{data.rawData.main.humidity}} %<br>
-		Zachmórzenie: {{data.rawData.clouds.all}} %<br>
-		<!--<span *ngIf="data.rawData.main.sea_level" style="color: red">Ciśnienie atmosferyczne na poziomie morza: {{data.rawData.main.sea_level}} hPa<br></span>-->
-		<!--<span *ngIf="data.rawData.main.grnd_level" style="color: red">Ciśnienie atmosferyczne na poziomie gruntu: {{data.rawData.main.grnd_level}} hPa<br></span>-->
-		<!--Widoczność: {{data.rawData.visibility}}<br>-->
-		Prędkość wiatru: {{data.rawData.wind.speed}} m/s<br>
-		<span style="color: orange">Kierunek wiatru: {{data.rawData.wind.deg}} &deg;<br></span>
-		<!--<span *ngIf="data.rawData.rain" style="color: red">Opady deszczu: {{data.rawData.rain["3h"]}}<br></span>-->
-		<!--<span *ngIf="data.rawData.snow" style="color: red">Opady śniegu: {{data.rawData.snow["3h"]}}<br></span>-->
-		Wschód słońca: {{data.rawData.sys.sunrise * 1000 | date:'HH:mm'}}<br>
-		Zachód słońca: {{data.rawData.sys.sunset * 1000 | date:'HH:mm'}}<br>
+		<!--Warunki pogodowe: {{data.weather[0].id}}-->
+		<!--Opis warunków: {{data.weather[0].description}}-->
+		Ciśnienie atmosferyczne: {{data.main.pressure}} hPa<br>
+		Wilgotność: {{data.main.humidity}} %<br>
+		Zachmórzenie: {{data.clouds.all}} %<br>
+		<!--<span *ngIf="data.main.sea_level" style="color: red">Ciśnienie atmosferyczne na poziomie morza: {{data.main.sea_level}} hPa<br></span>-->
+		<!--<span *ngIf="data.main.grnd_level" style="color: red">Ciśnienie atmosferyczne na poziomie gruntu: {{data.main.grnd_level}} hPa<br></span>-->
+		<!--Widoczność: {{data.visibility}}<br>-->
+		Prędkość wiatru: {{data.wind.speed}} m/s<br>
+		<span style="color: orange">Kierunek wiatru: {{data.wind.deg}} &deg;<br></span>
+		<!--<span *ngIf="data.rain" style="color: red">Opady deszczu: {{data.rain["3h"]}}<br></span>-->
+		<!--<span *ngIf="data.snow" style="color: red">Opady śniegu: {{data.snow["3h"]}}<br></span>-->
+		Wschód słońca: {{data.sys.sunrise * 1000 | date:'HH:mm'}}<br>
+		Zachód słońca: {{data.sys.sunset * 1000 | date:'HH:mm'}}<br>
 	</div>
 </div>
